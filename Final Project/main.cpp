@@ -1,15 +1,18 @@
-//
-//  main.cpp
-//  Final Project
-//
-//  Created by Ryan Alvarez-Cohen on 10/27/17.
-//  Copyright © 2017 Ryan Alvarez-Cohen. All rights reserved.
-//
+#include "Board.hpp"
+#include "Player.hpp"
+#include "Enemy.hpp"
+#include "Game.hpp"
 
 #include <iostream>
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+int main() {
+    
+    srand(static_cast<unsigned int>(time(0)));
+    
+    
+    Player();
+    
+    
+    
     return 0;
 }
