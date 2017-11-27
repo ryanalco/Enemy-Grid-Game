@@ -14,23 +14,43 @@
 class Player{
 public:
     Player();
-    void update_location(/* some type of input */);
-    int get_location();
+    bool is_alive();
+    void kill();
+    void move(int x);
+    int get_row() const;
+    int get_col() const;
     
 private:
-    int x_location, y_location;
+    bool alive;
+    int row, col;
 };
 
 Player:: Player () {
-    x_location = 5;
-    y_location = 5;
+    alive = true;
+    row = 5;
+    col = 5;
 }
 
-int Player:: get_location() {
-    return std:: array[x_location][y_location];
+bool Player:: is_alive() {
+    if (alive) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
+int Player:: get_row() const {
+    return row;
+}
 
+int Player:: get_col() const {
+    return col;
+}
+
+void Player:: kill() {
+    alive = false;
+}
 
 
 #endif /* Player_hpp */

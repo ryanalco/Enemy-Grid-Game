@@ -9,7 +9,8 @@
 #ifndef Enemy_hpp
 #define Enemy_hpp
 
-#include <stdio.h>
+#include <cstdlib>
+
 
 
 class Enemy {
@@ -17,6 +18,7 @@ public:
     Enemy(int row, int col);
     int get_row() const;
     int get_col() const;
+    void move();
     
 private:
     int row;
@@ -35,6 +37,43 @@ int Enemy:: get_col() const {
 
 int Enemy:: get_row() const {
     return this->row;
+}
+
+void Enemy:: move() {
+    switch (rand() % 4) {
+        //move up
+        case 0:
+            if (row == 0) {
+                return;
+            }
+            else {
+                row -= 1;
+            }
+        //move left
+        case 1:
+            if (col == 0) {
+                return;
+            }
+            else {
+                col -= 1;
+            }
+        //move right
+        case 2:
+            if (col == 9) {
+                return;
+            }
+            else {
+                col += 1;
+            }
+        //move down
+        case 3:
+            if (row == 9) {
+                return;
+            }
+            else {
+                row += 1;
+            }
+    }
 }
 
 

@@ -10,7 +10,9 @@
 #define Game_hpp
 
 #include <stdio.h>
+#include "Board.hpp"
 
+class Board;
 
 
 class Game {
@@ -51,7 +53,8 @@ Game:: Game(int level) {
             if (row_enemy == row_player && col_enemy == col_player) {
                 continue;
             }
-            board->add_enemy(row_enemy, col_enemy);
+            Enemy* monster = new Enemy(row_enemy, col_enemy);
+            board->add_enemy(monster);
             enemies--;
         }
     }
@@ -63,7 +66,8 @@ Game:: Game(int level) {
             if (row_enemy == row_player && col_enemy == col_player) {
                 continue;
             }
-            board->add_enemy(row_enemy, col_enemy);
+            Enemy* monster = new Enemy(row_enemy, col_enemy);
+            board->add_enemy(monster);
             enemies--;
         }
     }
@@ -79,7 +83,7 @@ Game:: Game(int level) {
         throw;
     }
     
-    board->add_player(row_player, col_player);
+    //board->add_player(row_player, col_player);
 }
 
 Game:: ~Game() {
