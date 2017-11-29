@@ -10,6 +10,7 @@
 #define Enemy_hpp
 
 #include <cstdlib>
+#include "Additions.hpp"
 
 
 

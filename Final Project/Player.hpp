@@ -10,6 +10,7 @@
 #define Player_hpp
 #include <iostream>
 #include <stdio.h>
+#include "AddOns.hpp"
 
 class Player{
 public:
@@ -23,6 +24,11 @@ public:
 private:
     bool alive;
     int row, col;
+    const int UP    = 0;
+    const int DOWN  = 1;
+    const int LEFT  = 2;
+    const int RIGHT = 3;
+
 };
 
 Player:: Player () {
@@ -52,9 +58,9 @@ void Player:: kill() {
     alive = false;
 }
 
-void Player:: move(int x) {
+void Player:: move(int dir) {
     //up
-    if (x == 0) {
+    if (dir == UP) {
         if (row == 0) {
             return;
         }
