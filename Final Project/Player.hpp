@@ -27,8 +27,8 @@ private:
 
 Player:: Player () {
     alive = true;
-    row = 5;
-    col = 5;
+    row = 4;
+    col = 4;
 }
 
 bool Player:: is_alive() {
@@ -50,6 +50,45 @@ int Player:: get_col() const {
 
 void Player:: kill() {
     alive = false;
+}
+
+void Player:: move(int x) {
+    //up
+    if (x == 0) {
+        if (row == 0) {
+            return;
+        }
+        else {
+            row -= 1;
+        }
+    }
+    //down
+    else if (x == 1) {
+        if (row == 9) {
+            return;
+        }
+        else {
+            row += 1;
+        }
+    }
+    //move left
+    else if (x == 2) {
+        if (col == 0) {
+            return;
+        }
+        else {
+            col -= 1;
+        }
+    }
+    //move right
+    else if (x == 3) {
+        if (col == 9) {
+            return;
+        }
+        else {
+            col += 1;
+        }
+    }
 }
 
 

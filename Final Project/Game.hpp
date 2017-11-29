@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include "Board.hpp"
+#include "AddOns.hpp"
 
 class Board;
 
@@ -76,18 +77,26 @@ Game:: Game(int level) {
     }
     
     try {
-        board = new Board();
+        board = new Board(enemies);
     }
     catch(std::exception & e) {
         board = nullptr;
         throw;
     }
     
-    //board->add_player(row_player, col_player);
+    board->add_player();
 }
 
 Game:: ~Game() {
     delete board;
+}
+
+void Game:: play() {
+    Player* p = board->create_player();
+    while (p->is_alive()) {
+        std::cout << "Use arrow keys to move\n";
+        
+    }
 }
 
 

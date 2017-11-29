@@ -27,6 +27,7 @@
 		728B006C1FBCCFEB00F4B84D /* Player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Player.hpp; sourceTree = "<group>"; };
 		728B006F1FC288B400F4B84D /* Game.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
 		728B00721FC2891000F4B84D /* Enemy.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Enemy.hpp; sourceTree = "<group>"; };
+		728B00751FCE706E00F4B84D /* AddOns.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AddOns.hpp; sourceTree = "<group>"; };
 		72D924F01FA3C130003CAEE7 /* Final Project */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Final Project"; sourceTree = BUILT_PRODUCTS_DIR; };
 		72D924F31FA3C130003CAEE7 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,6 +67,7 @@
 				728B006F1FC288B400F4B84D /* Game.hpp */,
 				728B00691FBCC84600F4B84D /* Board.hpp */,
 				728B00721FC2891000F4B84D /* Enemy.hpp */,
+				728B00751FCE706E00F4B84D /* AddOns.hpp */,
 			);
 			path = "Final Project";
 			sourceTree = "<group>";

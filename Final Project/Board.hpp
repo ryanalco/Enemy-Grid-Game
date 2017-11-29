@@ -23,10 +23,10 @@ class Board {
 public:
     Board(int enemies);
     virtual ~Board();
-    void add_enemy(const Enemy& monster);
-    //void add_player();
+    void add_enemy(Enemy* monster);
+    void add_player();
     void show_grid();
-    void create_player();
+    Player* create_player();
     void move_enemies();
     //Player* player() const;
     
@@ -50,14 +50,24 @@ Board:: ~Board() {
     }
 }
 
-void Board:: add_enemy(const Enemy& monster) {
+void Board:: add_enemy(Enemy* monster) {
     enemy_list.push_back(monster);
 }
 
-/*void Board:: add_player() {
-    
+Player* Board:: create_player() {
+    return guy;
 }
-*/
+
+void Board:: add_player() {
+    try {
+        guy = new Player();
+    }
+    catch(std::exception& e) {
+        guy = nullptr;
+        throw;
+    }
+}
+
 
 void Board:: show_grid() {
     

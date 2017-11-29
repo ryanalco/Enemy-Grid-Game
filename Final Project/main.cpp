@@ -9,10 +9,8 @@ int main() {
     
     srand(static_cast<unsigned int>(time(0)));
     
-    
-    Player();
-    
-    
+    Game test(1);
+    test
     
     return 0;
 }
