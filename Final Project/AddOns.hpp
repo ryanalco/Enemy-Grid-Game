@@ -5,7 +5,7 @@
 //  Created by Ryan Alvarez-Cohen on 11/28/17.
 //  Copyright © 2017 Ryan Alvarez-Cohen. All rights reserved.
 //
-
+/*
 #ifndef AddOns_hpp
 #define AddOns_hpp
 
@@ -33,7 +33,7 @@ const int RIGHT = 3;
 
 char getCharacter();
 
-#endif /* AddOns_hpp */
+#endif /* AddOns_hpp
 
 
 int decodeDirection(char dir)
@@ -187,5 +187,5 @@ char getCharacter()
     }
 }
 
-
+*/
 
