@@ -69,7 +69,7 @@ void Player:: move(int dir) {
         }
     }
     //down
-    else if (x == 1) {
+    else if (dir == DOWN) {
         if (row == 9) {
             return;
         }
@@ -78,7 +78,7 @@ void Player:: move(int dir) {
         }
     }
     //move left
-    else if (x == 2) {
+    else if (dir == LEFT) {
         if (col == 0) {
             return;
         }
@@ -87,7 +87,7 @@ void Player:: move(int dir) {
         }
     }
     //move right
-    else if (x == 3) {
+    else if (dir == RIGHT) {
         if (col == 9) {
             return;
         }

@@ -10,6 +10,9 @@
 #define Game_hpp
 
 #include <stdio.h>
+#include <iostream>
+#include <string>
+#include <cstdlib>
 #include "Board.hpp"
 #include "AddOns.hpp"
 
@@ -94,7 +97,25 @@ Game:: ~Game() {
 void Game:: play() {
     Player* p = board->create_player();
     while (p->is_alive()) {
+        board->show_grid();
         std::cout << "Use arrow keys to move\n";
+        char response;
+        response = getCharacter(); //this is from the Additions.hpp
+        if (isblank(response)) {
+            return;
+            //change this?
+        }
+        else {
+            switch (response) {
+                case 'u':
+                case 'd':
+                case 'l':
+                case 'r':
+                    p->move(decodeDirection(response));
+                    break;
+            }
+        }
+        
         
     }
 }

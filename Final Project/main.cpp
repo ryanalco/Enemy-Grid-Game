@@ -10,7 +10,7 @@ int main() {
     srand(static_cast<unsigned int>(time(0)));
     
     Game test(1);
-    test
+    test.play();
     
     return 0;
 }
