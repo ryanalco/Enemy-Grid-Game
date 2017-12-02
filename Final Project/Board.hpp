@@ -14,7 +14,6 @@
 #include "Enemy.hpp"
 #include "Player.hpp"
 #include "Additions.hpp"
-#include <vector>
 
 
 class Enemy;
@@ -24,7 +23,7 @@ class Board {
 public:
     Board(int enemies);
     virtual ~Board();
-    void add_enemy(Enemy* monster);
+    void add_enemy(int e_row, int e_col);
     void add_player();
     void show_grid();
     Player* create_player();
@@ -33,8 +32,9 @@ public:
     
 private:
     char grid[10][10];
-    std::vector<Enemy*> enemy_list;
+    Enemy* enemy_list[10];
     int enemies;
+    int count = 0;
     Player* guy;
 };
 
@@ -51,8 +51,16 @@ Board:: ~Board() {
     }
 }
 
-void Board:: add_enemy(Enemy* monster) {
-    enemy_list.push_back(monster);
+void Board:: add_enemy(int e_row, int e_col) {
+   /* {
+    Enemy* monster = new Enemy(e_row, e_col);
+    //std:: cout << enemy_list[0];
+    enemy_list[0] = monster;
+    count++;
+    //}
+   // catch (std::exception& e) {
+     //   throw;
+    */
 }
 
 Player* Board:: create_player() {
@@ -113,20 +121,22 @@ void Board:: show_grid() {
         player_spot = '@';
     }
     
+    clearScreen();
     //draw grid
     for (int a = 0; a < 10; a++) {
         for (int b = 0; b < 10; b++) {
             std::cout<< grid[a][b];
         }
+        std:: cout << endl;
     }
     
 }
 
 void Board:: move_enemies() {
-    for (int i = 0; i < enemy_list.size(); i++) {
+    for (int i = 0; i < enemies; i++) {
         enemy_list[i]->move();
     }
-    for (int i = 0; i < enemy_list.size(); i++) {
+    for (int i = 0; i < enemies; i++) {
         if ((guy->get_col() == enemy_list[i]->get_col()) && (guy->get_row() == enemy_list[i]->get_col())) {
             guy->kill();
         }

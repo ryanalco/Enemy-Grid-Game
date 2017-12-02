@@ -44,8 +44,8 @@ Game:: Game(int level) {
             if (row_enemy == row_player && col_enemy == col_player) {
                 continue;
             }
-            Enemy* monster = new Enemy(row_enemy, col_enemy);
-            board->add_enemy(monster);
+            //Enemy* monster = new Enemy(row_enemy, col_enemy);
+            board->add_enemy(row_enemy, col_enemy);
             enemies--;
         }
     }
@@ -57,8 +57,8 @@ Game:: Game(int level) {
             if (row_enemy == row_player && col_enemy == col_player) {
                 continue;
             }
-            Enemy* monster = new Enemy(row_enemy, col_enemy);
-            board->add_enemy(monster);
+            //Enemy* monster = new Enemy(row_enemy, col_enemy);
+            board->add_enemy(row_enemy, col_enemy);
             enemies--;
         }
     }
@@ -70,8 +70,8 @@ Game:: Game(int level) {
             if (row_enemy == row_player && col_enemy == col_player) {
                 continue;
             }
-            Enemy* monster = new Enemy(row_enemy, col_enemy);
-            board->add_enemy(monster);
+            //Enemy* monster = new Enemy(row_enemy, col_enemy);
+            board->add_enemy(row_enemy, col_enemy);
             enemies--;
         }
     }
