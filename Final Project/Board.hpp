@@ -10,7 +10,8 @@
 #define Board_hpp
 
 #include <iostream>
-#include <stdio.h>
+#include <cstdlib>
+#include <string>
 #include "Enemy.hpp"
 #include "Player.hpp"
 #include "Additions.hpp"
@@ -52,7 +53,7 @@ Board:: ~Board() {
 }
 
 void Board:: add_enemy(int e_row, int e_col) {
-   /* {
+   //{
     Enemy* monster = new Enemy(e_row, e_col);
     //std:: cout << enemy_list[0];
     enemy_list[0] = monster;
@@ -60,7 +61,7 @@ void Board:: add_enemy(int e_row, int e_col) {
     //}
    // catch (std::exception& e) {
      //   throw;
-    */
+
 }
 
 Player* Board:: create_player() {

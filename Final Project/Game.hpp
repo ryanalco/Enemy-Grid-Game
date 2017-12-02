@@ -31,13 +31,22 @@ private:
 
 
 Game:: Game(int level) {
-    //board = new Board(int level)
+    
+    //board = new Board(enemies);
     
     int row_player = 1 + rand() % 10;
     int col_player = 1 + rand() % 10;
     
     if (level == 1) {
         enemies = 5;
+        //board = new Board(enemies);
+        try {
+            board = new Board(enemies);
+        }
+        catch(std::exception & e) {
+            board = nullptr;
+            throw;
+        }
         while (enemies > 0) {
             int row_enemy = 1 + rand() % 10;
             int col_enemy = 1 + rand() % 10;
@@ -51,6 +60,13 @@ Game:: Game(int level) {
     }
     else if (level == 2) {
         enemies = 7;
+        try {
+            board = new Board(enemies);
+        }
+        catch(std::exception & e) {
+            board = nullptr;
+            throw;
+        }
         while (enemies > 0) {
             int row_enemy = 1 + rand() % 10;
             int col_enemy = 1 + rand() % 10;
@@ -64,6 +80,13 @@ Game:: Game(int level) {
     }
     else if (level == 3) {
         enemies = 10;
+        try {
+            board = new Board(enemies);
+        }
+        catch(std::exception & e) {
+            board = nullptr;
+            throw;
+        }
         while (enemies > 0) {
             int row_enemy = 1 + rand() % 10;
             int col_enemy = 1 + rand() % 10;
@@ -78,7 +101,7 @@ Game:: Game(int level) {
     else {
         std::cout << "error";
     }
-    
+    /*
     try {
         board = new Board(enemies);
     }
@@ -86,7 +109,7 @@ Game:: Game(int level) {
         board = nullptr;
         throw;
     }
-    
+    */
     board->add_player();
 }
 
