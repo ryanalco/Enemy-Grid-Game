@@ -11,10 +11,13 @@
 #include <iostream>
 #include <stdio.h>
 #include "AddOns.hpp"
+#include "Board.hpp"
+
+class Board;
 
 class Player{
 public:
-    Player();
+    Player(Board* board);
     bool is_alive();
     void kill();
     void move(int x);
@@ -28,10 +31,12 @@ private:
     const int DOWN  = 1;
     const int LEFT  = 2;
     const int RIGHT = 3;
+    Board* board;
 
 };
 
-Player:: Player () {
+Player:: Player (Board* board) {
+    this->board = board;
     alive = true;
     row = 4;
     col = 4;
@@ -95,6 +100,11 @@ void Player:: move(int dir) {
             col += 1;
         }
     }
+    
+    if (board->enemies_at(row, col) != 0) {
+        this->kill();
+    }
+    
 }
 
 

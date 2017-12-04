@@ -29,6 +29,7 @@ public:
     void show_grid();
     Player* create_player();
     void move_enemies();
+    int enemies_at(int row, int col) const;
     //Player* player() const;
     
 private:
@@ -56,7 +57,7 @@ void Board:: add_enemy(int e_row, int e_col) {
    //{
     Enemy* monster = new Enemy(e_row, e_col);
     //std:: cout << enemy_list[0];
-    enemy_list[0] = monster;
+    enemy_list[count] = monster;
     count++;
     //}
    // catch (std::exception& e) {
@@ -70,7 +71,7 @@ Player* Board:: create_player() {
 
 void Board:: add_player() {
     try {
-        guy = new Player();
+        guy = new Player(this);
     }
     catch(std::exception& e) {
         guy = nullptr;
@@ -82,44 +83,44 @@ void Board:: add_player() {
 void Board:: show_grid() {
     
     //create board of x's
-    for (int r = 0; r < 10; r++) {
-        for (int c = 0; c < 10; c++) {
-            grid[r][c] = 'x';
+    for (int a = 0; a < 10; a++) {
+        for (int b = 0; b < 10; b++) {
+            grid[a][b] = 'x';
         }
     }
     
     //enemy location
     for (int i = 0; i < enemies; i++) {
-        char space = grid[enemy_list[i]->get_row()-1][enemy_list[i]->get_col()-1];
+        char& space = grid[enemy_list[i]->get_row()-1][enemy_list[i]->get_col()-1];
         switch(space) {
             case 'x': space = '*';
                 break;
-            case '*': space = 1;
+            case '*': space = '2';
                 break;
-            case '1': space = 2;
+            case '1': space = '3';
                 break;
-            case '2': space = 3;
+            case '2': space = '4';
                 break;
-            case '3': space = 4;
+            case '3': space = '5';
                 break;
-            case '4': space = 5;
+            case '4': space = '6';
                 break;
-            case '5': space = 6;
+            case '5': space = '7';
                 break;
-            case '6': space = 7;
+            case '6': space = '8';
                 break;
-            case '7': space = 8;
+            case '7': space = '9';
                 break;
         }
     }
     
     //create player position
-    char player_spot = grid[guy->get_row()-1][guy->get_col()-1];
-    if (!guy->is_alive()) {
-        player_spot = '!';
+    char& player_spot = grid[guy->get_row()-1][guy->get_col()-1];
+    if (guy->is_alive()) {
+        player_spot = '@';
     }
     else {
-        player_spot = '@';
+        player_spot = '!';
     }
     
     clearScreen();
@@ -142,6 +143,16 @@ void Board:: move_enemies() {
             guy->kill();
         }
     }
+}
+
+int Board:: enemies_at(int row, int col) const {
+    int count = 0;
+    for (int i = 0; i < enemies; i++) {
+        if ((enemy_list[i]->get_row() == row) && (enemy_list[i]->get_col() == col)) {
+            count++;
+        }
+    }
+    return count;
 }
 
 

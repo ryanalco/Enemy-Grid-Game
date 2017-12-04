@@ -101,15 +101,7 @@ Game:: Game(int level) {
     else {
         std::cout << "error";
     }
-    /*
-    try {
-        board = new Board(enemies);
-    }
-    catch(std::exception & e) {
-        board = nullptr;
-        throw;
-    }
-    */
+
     board->add_player();
 }
 
@@ -138,7 +130,7 @@ void Game:: play() {
                     break;
             }
         }
-        
+        board->move_enemies();
         
     }
 }

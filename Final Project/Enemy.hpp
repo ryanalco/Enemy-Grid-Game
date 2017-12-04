@@ -33,11 +33,11 @@ Enemy:: Enemy(int row, int col) {
 }
 
 int Enemy:: get_col() const {
-    return this->col;
+    return col;
 }
 
 int Enemy:: get_row() const {
-    return this->row;
+    return row;
 }
 
 void Enemy:: move() {
@@ -49,7 +49,10 @@ void Enemy:: move() {
             }
             else {
                 row -= 1;
+                std::cout<< "move up\n";
+                break;
             }
+            
         //move left
         case 1:
             if (col == 0) {
@@ -57,7 +60,10 @@ void Enemy:: move() {
             }
             else {
                 col -= 1;
+                std::cout<< "move left\n";
+                break;
             }
+            
         //move right
         case 2:
             if (col == 9) {
@@ -65,7 +71,10 @@ void Enemy:: move() {
             }
             else {
                 col += 1;
+                std::cout<< "move right\n";
+                break;
             }
+            
         //move down
         case 3:
             if (row == 9) {
@@ -73,7 +82,10 @@ void Enemy:: move() {
             }
             else {
                 row += 1;
+                std::cout<< "move down\n";
+                break;
             }
+            
     }
 }
 
