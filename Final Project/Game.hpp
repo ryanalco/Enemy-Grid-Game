@@ -103,6 +103,10 @@ Game:: Game(int level) {
     }
 
     board->add_player();
+    board->create_star(3, 3);
+    board->create_star(8, 8);
+    board->create_star(3, 8);
+    board->create_star(8, 3);
 }
 
 Game:: ~Game() {
@@ -111,7 +115,7 @@ Game:: ~Game() {
 
 void Game:: play() {
     Player* p = board->create_player();
-    while (p->is_alive()) {
+    while ((p->is_alive()) && (board->num_stars() > 0)) {
         board->show_grid();
         std::cout << "Use arrow keys to move\n";
         char response;

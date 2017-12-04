@@ -105,6 +105,10 @@ void Player:: move(int dir) {
         this->kill();
     }
     
+    if (board->star_at(row, col)) {
+        board->kill_star();
+    }
+    
 }
 
 
