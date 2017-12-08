@@ -53,6 +53,7 @@ Game:: Game(int level) {
             board->add_enemy(row_enemy, col_enemy);
             enemies--;
         }
+        board->add_player();
     }
     else if (level == 2) {
         enemies = 7;
@@ -72,6 +73,7 @@ Game:: Game(int level) {
             board->add_enemy(row_enemy, col_enemy);
             enemies--;
         }
+        board->add_player();
     }
     else if (level == 3) {
         enemies = 10;
@@ -91,6 +93,7 @@ Game:: Game(int level) {
             board->add_enemy(row_enemy, col_enemy);
             enemies--;
         }
+        board->add_player();
     }
     else {
         std::cout << "error";
@@ -101,7 +104,7 @@ Game:: Game(int level) {
     board->create_star(2, 9);
     board->create_star(9, 2);
 
-    board->add_player();
+    
     
 }
 
@@ -131,7 +134,7 @@ void Game:: play() {
             }
         }
         board->move_enemies();
-        
+        board->check_stars();
     }
 }
 

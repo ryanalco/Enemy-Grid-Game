@@ -40,7 +40,7 @@ private:
 Player:: Player (Board* board) {
     if (board == nullptr)
     {
-        cout << "***** The player must be in board" << endl;
+        cout << "The player must be in board" << endl;
         exit(1);
     }
     this->board = board;
@@ -68,6 +68,7 @@ int Player:: get_col() const {
 
 void Player:: kill() {
     alive = false;
+    std:: cout << "You died\n";
 }
 
 void Player:: move(int dir) {
@@ -108,17 +109,17 @@ void Player:: move(int dir) {
             col += 1;
         }
     }
-    
+    /*
     if (board->enemies_at(row, col) != 0) {
         this->kill();
-        
     }
+    
     
     if (board->star_at(row, col)) {
         board->kill_star();
         std:: cout << "You got a star!\n";
     }
-    
+    */
 }
 
 

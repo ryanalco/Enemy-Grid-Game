@@ -9,6 +9,11 @@
 #ifndef Board_hpp
 #define Board_hpp
 
+class Enemy;
+class Player;
+class Star;
+
+
 #include <iostream>
 #include <cstdlib>
 #include <string>
@@ -18,16 +23,14 @@
 #include "Additions.hpp"
 
 
-class Enemy;
-class Player;
-class Star;
+
 
 class Board {
 public:
     Board(int enemies);
     virtual ~Board();
     void add_enemy(int e_row, int e_col);
-    void add_player();
+    bool add_player();
     void show_grid();
     Player* create_player();
     void move_enemies();
@@ -35,6 +38,7 @@ public:
     void create_star(int s_row, int s_col);
     int num_stars() const;
     void kill_star(int s_row, int s_col);
+    void check_stars();
     bool star_at(int s_row, int s_col);
     
 private:
@@ -71,22 +75,24 @@ void Board:: add_enemy(int e_row, int e_col) {
     catch (std:: exception& e) {
         throw;
     }
-    
 }
 
 Player* Board:: create_player() {
     return guy;
 }
 
-void Board:: add_player() {
-    try {
-        guy = new Player(this);
-    }
-    catch(std::exception& e) {
-        guy = nullptr;
-        throw;
-    }
+
+bool Board:: add_player() {
+    //try {
+    guy = new Player(this);
+    return true;
+    //}
+    //catch(std::exception& e) {
+     //   guy = nullptr;
+     //   throw;
+    //}
 }
+
 
 void Board:: create_star(int s_row, int s_col) {
     try {
@@ -110,11 +116,12 @@ bool Board:: star_at(int s_row, int s_col) {
 
 void Board:: kill_star(int s_row, int s_col) {
     for (int i = 0; i < star_num; i++) {
-        if ((star_list[i]->get_row() == guy->get_row()) && (star_list[i]->get_col() == guy->get_col())) {
+        if ((star_list[i]->get_row() == s_row) && (star_list[i]->get_col() == s_col)) {
             star_list[i]->achieve();
         }
     star_num--;
     }
+    std:: cout << "You got a star!\n";
 }
 
 
@@ -188,7 +195,7 @@ void Board:: move_enemies() {
         enemy_list[i]->move();
     }
     for (int i = 0; i < enemies; i++) {
-        if ((guy->get_col() == enemy_list[i]->get_col()) && (guy->get_row() == enemy_list[i]->get_col())) {
+        if ((guy->get_col() == enemy_list[i]->get_col()) && (guy->get_row() == enemy_list[i]->get_row())) {
             guy->kill();
         }
     }
@@ -203,6 +210,15 @@ int Board:: enemies_at(int row, int col) {
     }
     return count;
 }
+
+void Board:: check_stars() {
+    for (int i = 0; i < star_num; i++) {
+        if ((guy->get_col() == star_list[i]->get_col()) && (guy->get_row() == star_list[i]->get_row())) {
+            kill_star(star_list[i]->get_row(), star_list[i]->get_col());
+        }
+    }
+}
+
 
 int Board:: num_stars() const {
     return star_num;
