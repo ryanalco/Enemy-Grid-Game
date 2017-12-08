@@ -31,7 +31,7 @@ public:
     void show_grid();
     Player* create_player();
     void move_enemies();
-    int enemies_at(int row, int col) const;
+    int enemies_at(int row, int col);
     void create_star(int s_row, int s_col);
     int num_stars() const;
     void kill_star(int s_row, int s_col);
@@ -194,7 +194,7 @@ void Board:: move_enemies() {
     }
 }
 
-int Board:: enemies_at(int row, int col) const {
+int Board:: enemies_at(int row, int col) {
     int count = 0;
     for (int i = 0; i < enemies; i++) {
         if ((enemy_list[i]->get_row() == row) && (enemy_list[i]->get_col() == col)) {

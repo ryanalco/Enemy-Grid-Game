@@ -49,7 +49,7 @@ void Enemy:: move() {
             }
             else {
                 row -= 1;
-                std::cout<< "move up\n";
+                //std::cout<< "move up\n";
                 break;
             }
             
@@ -60,7 +60,7 @@ void Enemy:: move() {
             }
             else {
                 col -= 1;
-                std::cout<< "move left\n";
+                //std::cout<< "move left\n";
                 break;
             }
             
@@ -71,7 +71,7 @@ void Enemy:: move() {
             }
             else {
                 col += 1;
-                std::cout<< "move right\n";
+                //std::cout<< "move right\n";
                 break;
             }
             
@@ -82,7 +82,7 @@ void Enemy:: move() {
             }
             else {
                 row += 1;
-                std::cout<< "move down\n";
+                //std::cout<< "move down\n";
                 break;
             }
             

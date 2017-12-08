@@ -66,9 +66,9 @@
 			isa = PBXGroup;
 			children = (
 				72D924F31FA3C130003CAEE7 /* main.cpp */,
-				728B006C1FBCCFEB00F4B84D /* Player.hpp */,
 				728B006F1FC288B400F4B84D /* Game.hpp */,
 				728B00691FBCC84600F4B84D /* Board.hpp */,
+				728B006C1FBCCFEB00F4B84D /* Player.hpp */,
 				728B008E1FD501F200F4B84D /* Star.hpp */,
 				728B00721FC2891000F4B84D /* Enemy.hpp */,
 				728B00781FCE736F00F4B84D /* Additions.hpp */,

@@ -6,14 +6,16 @@
 //  Copyright © 2017 Ryan Alvarez-Cohen. All rights reserved.
 //
 
+class Board;
+
 #ifndef Player_hpp
 #define Player_hpp
 #include <iostream>
-#include <stdio.h>
+//#include <stdio.h>
 #include "AddOns.hpp"
 #include "Board.hpp"
 
-class Board;
+
 
 class Player{
 public:
@@ -36,6 +38,11 @@ private:
 };
 
 Player:: Player (Board* board) {
+    if (board == nullptr)
+    {
+        cout << "***** The player must be in board" << endl;
+        exit(1);
+    }
     this->board = board;
     alive = true;
     row = 4;
@@ -65,6 +72,7 @@ void Player:: kill() {
 
 void Player:: move(int dir) {
     //up
+    
     if (dir == UP) {
         if (row == 0) {
             return;
@@ -103,10 +111,12 @@ void Player:: move(int dir) {
     
     if (board->enemies_at(row, col) != 0) {
         this->kill();
+        
     }
     
     if (board->star_at(row, col)) {
         board->kill_star();
+        std:: cout << "You got a star!\n";
     }
     
 }

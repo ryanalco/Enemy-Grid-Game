@@ -32,14 +32,11 @@ private:
 
 Game:: Game(int level) {
     
-    //board = new Board(enemies);
-    
     int row_player = 1 + rand() % 10;
     int col_player = 1 + rand() % 10;
     
     if (level == 1) {
         enemies = 5;
-        //board = new Board(enemies);
         try {
             board = new Board(enemies);
         }
@@ -53,7 +50,6 @@ Game:: Game(int level) {
             if (row_enemy == row_player && col_enemy == col_player) {
                 continue;
             }
-            //Enemy* monster = new Enemy(row_enemy, col_enemy);
             board->add_enemy(row_enemy, col_enemy);
             enemies--;
         }
@@ -73,7 +69,6 @@ Game:: Game(int level) {
             if (row_enemy == row_player && col_enemy == col_player) {
                 continue;
             }
-            //Enemy* monster = new Enemy(row_enemy, col_enemy);
             board->add_enemy(row_enemy, col_enemy);
             enemies--;
         }
@@ -93,7 +88,6 @@ Game:: Game(int level) {
             if (row_enemy == row_player && col_enemy == col_player) {
                 continue;
             }
-            //Enemy* monster = new Enemy(row_enemy, col_enemy);
             board->add_enemy(row_enemy, col_enemy);
             enemies--;
         }
@@ -101,12 +95,14 @@ Game:: Game(int level) {
     else {
         std::cout << "error";
     }
+    
+    board->create_star(2, 2);
+    board->create_star(9, 9);
+    board->create_star(2, 9);
+    board->create_star(9, 2);
 
     board->add_player();
-    board->create_star(3, 3);
-    board->create_star(8, 8);
-    board->create_star(3, 8);
-    board->create_star(8, 3);
+    
 }
 
 Game:: ~Game() {
@@ -115,6 +111,7 @@ Game:: ~Game() {
 
 void Game:: play() {
     Player* p = board->create_player();
+    std:: cout << "Player must get every star(\"*\") while avoiding the enemies(\"!\")\n";
     while ((p->is_alive()) && (board->num_stars() > 0)) {
         board->show_grid();
         std::cout << "Use arrow keys to move\n";
@@ -122,7 +119,6 @@ void Game:: play() {
         response = getCharacter(); //this is from the Additions.hpp
         if (isblank(response)) {
             return;
-            //change this?
         }
         else {
             switch (response) {

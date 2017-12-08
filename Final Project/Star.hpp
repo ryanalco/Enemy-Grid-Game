@@ -49,7 +49,7 @@ bool Star:: state() {
     }
 }
 
-void Star:: acheive() {
+void Star:: achieve() {
     complete = true;
 }
 
