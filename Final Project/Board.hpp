@@ -170,6 +170,7 @@ void Board:: show_grid() {
     
     //create player position
     char& player_spot = grid[guy->get_row()-1][guy->get_col()-1];
+    //std:: cout << guy->get_row()-1 << guy->get_col()-1 << endl;
     if (guy->is_alive()) {
         //if (player_spot == '*') {
           //  player_spot = '$';
