@@ -44,7 +44,7 @@ void Enemy:: move() {
     switch (rand() % 4) {
         //move up
         case 0:
-            if (row == 0) {
+            if (row == 1) {
                 return;
             }
             else {
@@ -55,7 +55,7 @@ void Enemy:: move() {
             
         //move left
         case 1:
-            if (col == 0) {
+            if (col == 1) {
                 return;
             }
             else {
@@ -66,7 +66,7 @@ void Enemy:: move() {
             
         //move right
         case 2:
-            if (col == 9) {
+            if (col == 10) {
                 return;
             }
             else {
@@ -77,7 +77,7 @@ void Enemy:: move() {
             
         //move down
         case 3:
-            if (row == 9) {
+            if (row == 10) {
                 return;
             }
             else {

@@ -136,6 +136,13 @@ void Game:: play() {
         board->move_enemies();
         board->check_stars();
     }
+    board->show_grid();
+    if (!p->is_alive()) {
+        std:: cout << "You died pussy\n";
+    }
+    else {
+        std:: cout << "You got all the stars!\n";
+    }
 }
 
 

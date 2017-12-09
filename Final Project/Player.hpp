@@ -68,7 +68,7 @@ int Player:: get_col() const {
 
 void Player:: kill() {
     alive = false;
-    std:: cout << "You died\n";
+    //std:: cout << "You died\n";
 }
 
 void Player:: move(int dir) {

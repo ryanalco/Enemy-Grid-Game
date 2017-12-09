@@ -30,16 +30,16 @@ public:
     Board(int enemies);
     virtual ~Board();
     void add_enemy(int e_row, int e_col);
-    bool add_player();
+    void add_player();
     void show_grid();
     Player* create_player();
     void move_enemies();
-    int enemies_at(int row, int col);
+    //int enemies_at(int row, int col);
     void create_star(int s_row, int s_col);
     int num_stars() const;
     void kill_star(int s_row, int s_col);
     void check_stars();
-    bool star_at(int s_row, int s_col);
+    //bool star_at(int s_row, int s_col);
     
 private:
     char grid[10][10];
@@ -82,15 +82,14 @@ Player* Board:: create_player() {
 }
 
 
-bool Board:: add_player() {
-    //try {
-    guy = new Player(this);
-    return true;
-    //}
-    //catch(std::exception& e) {
-     //   guy = nullptr;
-     //   throw;
-    //}
+void Board:: add_player() {
+    try {
+        guy = new Player(this);
+    }
+    catch(std::exception& e) {
+        guy = nullptr;
+        throw;
+    }
 }
 
 
@@ -104,7 +103,7 @@ void Board:: create_star(int s_row, int s_col) {
         throw;
     }
 }
-
+/*
 bool Board:: star_at(int s_row, int s_col) {
     for (int i = 0; i < star_num; i++) {
         if ((star_list[i]->get_row() == s_row) && (star_list[i]->get_col() == s_col)) {
@@ -113,7 +112,7 @@ bool Board:: star_at(int s_row, int s_col) {
     }
     return false;
 }
-
+*/
 void Board:: kill_star(int s_row, int s_col) {
     for (int i = 0; i < star_num; i++) {
         if ((star_list[i]->get_row() == s_row) && (star_list[i]->get_col() == s_col)) {
@@ -160,15 +159,6 @@ void Board:: show_grid() {
         }
     }
     
-    //create player position
-    char& player_spot = grid[guy->get_row()-1][guy->get_col()-1];
-    if (guy->is_alive()) {
-        player_spot = '@';
-    }
-    else {
-        player_spot = '#';
-    }
-    
     //create stars position
     for (int i = 0; i < 4; i++) {
         char& star_spot = grid[star_list[i]->get_row()-1][star_list[i]->get_col()-1];
@@ -176,6 +166,20 @@ void Board:: show_grid() {
             star_spot = '*';
         }
         else star_spot = 'x';
+    }
+    
+    //create player position
+    char& player_spot = grid[guy->get_row()-1][guy->get_col()-1];
+    if (guy->is_alive()) {
+        if (player_spot == '*') {
+            player_spot = '$';
+        }
+        else {
+            player_spot = '@';
+        }
+    }
+    else {
+        player_spot = '#';
     }
     
     
@@ -200,7 +204,7 @@ void Board:: move_enemies() {
         }
     }
 }
-
+/*
 int Board:: enemies_at(int row, int col) {
     int count = 0;
     for (int i = 0; i < enemies; i++) {
@@ -210,7 +214,7 @@ int Board:: enemies_at(int row, int col) {
     }
     return count;
 }
-
+*/
 void Board:: check_stars() {
     for (int i = 0; i < star_num; i++) {
         if ((guy->get_col() == star_list[i]->get_col()) && (guy->get_row() == star_list[i]->get_row())) {
