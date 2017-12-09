@@ -114,7 +114,7 @@ Game:: ~Game() {
 
 void Game:: play() {
     Player* p = board->create_player();
-    std:: cout << "Player must get every star(\"*\") while avoiding the enemies(\"!\")\n";
+    std:: cout << "You(\"@\") must get every star(\"*\") while avoiding the enemies(\"!\"). Be careful, the enemies could be hiding behind a star! \n";
     while ((p->is_alive()) && (board->num_stars() > 0)) {
         board->show_grid();
         std::cout << "Use arrow keys to move\n";
@@ -138,7 +138,7 @@ void Game:: play() {
     }
     board->show_grid();
     if (!p->is_alive()) {
-        std:: cout << "You died pussy\n";
+        std:: cout << "You died :( \n";
     }
     else {
         std:: cout << "You got all the stars!\n";

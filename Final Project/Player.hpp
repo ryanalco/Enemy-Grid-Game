@@ -45,8 +45,8 @@ Player:: Player (Board* board) {
     }
     this->board = board;
     alive = true;
-    row = 4;
-    col = 4;
+    row = 5;
+    col = 5;
 }
 
 bool Player:: is_alive() {

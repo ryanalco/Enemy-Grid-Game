@@ -9,8 +9,8 @@ int main() {
     
     srand(static_cast<unsigned int>(time(0)));
     
-    Game test(3);
-    test.play();
+    Game g(1);
+    g.play();
     
     return 0;
 }
