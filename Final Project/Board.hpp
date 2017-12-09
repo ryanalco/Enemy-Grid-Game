@@ -118,8 +118,8 @@ void Board:: kill_star(int s_row, int s_col) {
         if ((star_list[i]->get_row() == s_row) && (star_list[i]->get_col() == s_col)) {
             star_list[i]->achieve();
         }
-    star_num--;
     }
+    star_num--;
     std:: cout << "You got a star!\n";
 }
 
@@ -162,7 +162,7 @@ void Board:: show_grid() {
     //create stars position
     for (int i = 0; i < 4; i++) {
         char& star_spot = grid[star_list[i]->get_row()-1][star_list[i]->get_col()-1];
-        if (!star_list[i]->state()) {
+        if (star_list[i]->state() == false) {
             star_spot = '*';
         }
         else star_spot = 'x';
@@ -171,12 +171,12 @@ void Board:: show_grid() {
     //create player position
     char& player_spot = grid[guy->get_row()-1][guy->get_col()-1];
     if (guy->is_alive()) {
-        if (player_spot == '*') {
-            player_spot = '$';
-        }
-        else {
+        //if (player_spot == '*') {
+          //  player_spot = '$';
+        //}
+        //else {
             player_spot = '@';
-        }
+        //}
     }
     else {
         player_spot = '#';
@@ -216,8 +216,8 @@ int Board:: enemies_at(int row, int col) {
 }
 */
 void Board:: check_stars() {
-    for (int i = 0; i < star_num; i++) {
-        if ((guy->get_col() == star_list[i]->get_col()) && (guy->get_row() == star_list[i]->get_row())) {
+    for (int i = 0; i < 4; i++) {
+        if (((guy->get_col() == star_list[i]->get_col()) && (guy->get_row() == star_list[i]->get_row())) && (star_list[i]->state() == false)) {
             kill_star(star_list[i]->get_row(), star_list[i]->get_col());
         }
     }

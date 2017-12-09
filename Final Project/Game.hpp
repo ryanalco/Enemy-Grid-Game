@@ -31,10 +31,10 @@ private:
 
 
 Game:: Game(int level) {
-    
+    /*
     int row_player = 1 + rand() % 10;
     int col_player = 1 + rand() % 10;
-    
+    */
     if (level == 1) {
         enemies = 5;
         try {
@@ -47,7 +47,7 @@ Game:: Game(int level) {
         while (enemies > 0) {
             int row_enemy = 1 + rand() % 10;
             int col_enemy = 1 + rand() % 10;
-            if (row_enemy == row_player && col_enemy == col_player) {
+            if (row_enemy == 5 && col_enemy == 5) {
                 continue;
             }
             board->add_enemy(row_enemy, col_enemy);
@@ -67,7 +67,7 @@ Game:: Game(int level) {
         while (enemies > 0) {
             int row_enemy = 1 + rand() % 10;
             int col_enemy = 1 + rand() % 10;
-            if (row_enemy == row_player && col_enemy == col_player) {
+            if (row_enemy == 5 && col_enemy == 5) {
                 continue;
             }
             board->add_enemy(row_enemy, col_enemy);
@@ -87,7 +87,7 @@ Game:: Game(int level) {
         while (enemies > 0) {
             int row_enemy = 1 + rand() % 10;
             int col_enemy = 1 + rand() % 10;
-            if (row_enemy == row_player && col_enemy == col_player) {
+            if (row_enemy == 5 && col_enemy == 5) {
                 continue;
             }
             board->add_enemy(row_enemy, col_enemy);

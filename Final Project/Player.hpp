@@ -75,7 +75,7 @@ void Player:: move(int dir) {
     //up
     
     if (dir == UP) {
-        if (row == 0) {
+        if (row == 1) {
             return;
         }
         else {
@@ -84,7 +84,7 @@ void Player:: move(int dir) {
     }
     //down
     else if (dir == DOWN) {
-        if (row == 9) {
+        if (row == 10) {
             return;
         }
         else {
@@ -93,7 +93,7 @@ void Player:: move(int dir) {
     }
     //move left
     else if (dir == LEFT) {
-        if (col == 0) {
+        if (col == 1) {
             return;
         }
         else {
@@ -102,7 +102,7 @@ void Player:: move(int dir) {
     }
     //move right
     else if (dir == RIGHT) {
-        if (col == 9) {
+        if (col == 10) {
             return;
         }
         else {
