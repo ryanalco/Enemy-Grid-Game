@@ -171,7 +171,7 @@ Game:: ~Game() {
 
 void Game:: play() {
     Player* p = board->create_player();
-    std:: cout << "You(\"@\") must get all the money(\"$\") while avoiding the moving enemies(\"!\") and the traps. Be careful, the enemies could be hiding behind the money or the traps! \n";
+    std:: cout << "You(\"@\") must get all the money(\"$\") while avoiding the moving enemies(\"!\") and the traps(\"*\"). Be careful, the enemies could be hiding behind the money or the traps! \n";
     while ((p->is_alive()) && (board->num_stars() > 0)) {
         board->show_grid();
         std::cout << "Use arrow keys to move\n";

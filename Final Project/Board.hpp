@@ -167,11 +167,11 @@ void Board:: show_grid() {
                 break;
             case '7': space = '9';
                 break;
-            case '$': space = '&';
+            case '$': space = '$';
                 break;
         }
     }
-    
+
     //create traps position
     for (int i = 0; i < t_num; i++) {
         char& trap_spot = grid[trap_list[i]->get_row()-1][trap_list[i]->get_col()-1];
