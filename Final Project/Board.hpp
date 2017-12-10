@@ -43,6 +43,8 @@ public:
     bool find_stars(int t_row, int t_col);
     void create_trap(int t_row, int t_col);
     void check_traps();
+    bool make_money();
+    void lose_money();
     
 private:
     char grid[10][10];
@@ -55,6 +57,7 @@ private:
     Star* star_list[4];
     Trap* trap_list[10];
     int t_num = 0;
+    bool get_money;
 };
 
 
@@ -62,6 +65,7 @@ Board:: Board(int enemies) {
     this->enemies = enemies;
     guy = nullptr;
     star_num = 4;
+    get_money = false;
 }
 
 Board:: ~Board() {
@@ -215,6 +219,7 @@ void Board:: check_stars() {
     for (int i = 0; i < 4; i++) {
         if (((guy->get_col() == star_list[i]->get_col()) && (guy->get_row() == star_list[i]->get_row())) && (star_list[i]->state() == false)) {
             kill_star(star_list[i]->get_row(), star_list[i]->get_col());
+            get_money = true;
         }
     }
 }
@@ -254,7 +259,18 @@ void Board:: check_traps() {
     }
 }
 
+bool Board:: make_money() {
+    if (get_money) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
 
+void Board:: lose_money() {
+    get_money = false;
+}
 
 
 
