@@ -117,7 +117,7 @@ void Board:: create_star(int s_row, int s_col) {
 
 
 void Board:: kill_star(int s_row, int s_col) {
-    for (int i = 0; i < star_num; i++) {
+    for (int i = 0; i < 4; i++) {
         if ((star_list[i]->get_row() == s_row) && (star_list[i]->get_col() == s_col)) {
             star_list[i]->achieve();
         }
@@ -134,6 +134,15 @@ void Board:: show_grid() {
         for (int b = 0; b < 10; b++) {
             grid[a][b] = 'x';
         }
+    }
+    
+    //create stars position
+    for (int i = 0; i < 4; i++) {
+        char& star_spot = grid[star_list[i]->get_row()-1][star_list[i]->get_col()-1];
+        if (star_list[i]->state() == false) {
+            star_spot = '$';
+        }
+        else star_spot = 'x';
     }
     
     //enemy location
@@ -158,17 +167,9 @@ void Board:: show_grid() {
                 break;
             case '7': space = '9';
                 break;
-            case '*': space = '&';
+            case '$': space = '&';
+                break;
         }
-    }
-    
-    //create stars position
-    for (int i = 0; i < 4; i++) {
-        char& star_spot = grid[star_list[i]->get_row()-1][star_list[i]->get_col()-1];
-        if (star_list[i]->state() == false) {
-            star_spot = '$';
-        }
-        else star_spot = 'x';
     }
     
     //create traps position
