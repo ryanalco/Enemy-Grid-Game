@@ -72,6 +72,9 @@ Board:: ~Board() {
     for (int i = 0; i < 4; i++) {
         delete star_list[i];
     }
+    for (int i = 0; i < t_num; i++) {
+        delete trap_list[i];
+    }
 }
 
 void Board:: add_enemy(int e_row, int e_col) {
