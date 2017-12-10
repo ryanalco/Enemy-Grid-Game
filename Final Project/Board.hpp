@@ -12,6 +12,7 @@
 class Enemy;
 class Player;
 class Star;
+class Trap;
 
 
 #include <iostream>
@@ -20,6 +21,7 @@ class Star;
 #include "Enemy.hpp"
 #include "Player.hpp"
 #include "Star.hpp"
+#include "Trap.hpp"
 #include "Additions.hpp"
 
 
@@ -34,12 +36,13 @@ public:
     void show_grid();
     Player* create_player();
     void move_enemies();
-    //int enemies_at(int row, int col);
     void create_star(int s_row, int s_col);
     int num_stars() const;
     void kill_star(int s_row, int s_col);
     void check_stars();
-    //bool star_at(int s_row, int s_col);
+    bool find_stars(int t_row, int t_col);
+    void create_trap(int t_row, int t_col);
+    void check_traps();
     
 private:
     char grid[10][10];
@@ -50,6 +53,8 @@ private:
     int num = 0;
     Player* guy;
     Star* star_list[4];
+    Trap* trap_list[10];
+    int t_num = 0;
 };
 
 
@@ -63,6 +68,9 @@ Board:: ~Board() {
     delete guy;
     for (int i = 0; i < enemies; i++) {
         delete enemy_list[i];
+    }
+    for (int i = 0; i < 4; i++) {
+        delete star_list[i];
     }
 }
 
@@ -103,16 +111,8 @@ void Board:: create_star(int s_row, int s_col) {
         throw;
     }
 }
-/*
-bool Board:: star_at(int s_row, int s_col) {
-    for (int i = 0; i < star_num; i++) {
-        if ((star_list[i]->get_row() == s_row) && (star_list[i]->get_col() == s_col)) {
-            return true;
-        }
-    }
-    return false;
-}
-*/
+
+
 void Board:: kill_star(int s_row, int s_col) {
     for (int i = 0; i < star_num; i++) {
         if ((star_list[i]->get_row() == s_row) && (star_list[i]->get_col() == s_col)) {
@@ -120,7 +120,7 @@ void Board:: kill_star(int s_row, int s_col) {
         }
     }
     star_num--;
-    std:: cout << "You got a star!\n";
+    std:: cout << "You got some money! \n";
 }
 
 
@@ -163,21 +163,21 @@ void Board:: show_grid() {
     for (int i = 0; i < 4; i++) {
         char& star_spot = grid[star_list[i]->get_row()-1][star_list[i]->get_col()-1];
         if (star_list[i]->state() == false) {
-            star_spot = '*';
+            star_spot = '$';
         }
         else star_spot = 'x';
     }
     
+    //create traps position
+    for (int i = 0; i < t_num; i++) {
+        char& trap_spot = grid[trap_list[i]->get_row()-1][trap_list[i]->get_col()-1];
+        trap_spot = '*';
+    }
     //create player position
     char& player_spot = grid[guy->get_row()-1][guy->get_col()-1];
     //std:: cout << guy->get_row()-1 << guy->get_col()-1 << endl;
     if (guy->is_alive()) {
-        //if (player_spot == '*') {
-          //  player_spot = '$';
-        //}
-        //else {
-            player_spot = '@';
-        //}
+        player_spot = '@';
     }
     else {
         player_spot = '#';
@@ -205,17 +205,8 @@ void Board:: move_enemies() {
         }
     }
 }
-/*
-int Board:: enemies_at(int row, int col) {
-    int count = 0;
-    for (int i = 0; i < enemies; i++) {
-        if ((enemy_list[i]->get_row() == row) && (enemy_list[i]->get_col() == col)) {
-            count++;
-        }
-    }
-    return count;
-}
-*/
+
+
 void Board:: check_stars() {
     for (int i = 0; i < 4; i++) {
         if (((guy->get_col() == star_list[i]->get_col()) && (guy->get_row() == star_list[i]->get_row())) && (star_list[i]->state() == false)) {
@@ -230,8 +221,34 @@ int Board:: num_stars() const {
 }
 
 
+void Board:: create_trap(int t_row, int t_col) {
+    try {
+        Trap* trap = new Trap(t_row, t_col);
+        trap_list[t_num] = trap;
+        t_num++;
+    }
+    catch(std::exception& e) {
+        throw;
+    }
+}
+
+bool Board:: find_stars(int t_row, int t_col) {
+    for (int i = 0; i < 4; i++) {
+        if ((star_list[i]->get_row() == t_row) && (star_list[i]->get_col() == t_col)) {
+            return true;
+        }
+    }
+    return false;
+}
 
 
+void Board:: check_traps() {
+    for (int i = 0; i < t_num; i++) {
+        if ((guy->get_col() == trap_list[i]->get_col()) && (guy->get_row() == trap_list[i]->get_row())) {
+            guy->kill();
+        }
+    }
+}
 
 
 
