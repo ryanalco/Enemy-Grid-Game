@@ -28,6 +28,7 @@ private:
     Board* board;
     int enemies;
     int traps;
+    int first = 0;
 };
 
 
@@ -168,19 +169,22 @@ Game:: Game(int level) {
 
 Game:: ~Game() {
     delete board;
+    board = nullptr;
 }
 
 void Game:: play() {
     Player* p = board->create_player();
-    std:: cout << "You(\"@\") must get all the money(\"$\") while avoiding the moving enemies(\"!\") and the traps(\"*\"). Be careful, the enemies could be hiding behind the money or the traps!\nUse the arrow keys to move.\n";
     while ((p->is_alive()) && (board->num_stars() > 0)) {
         board->show_grid();
+        if (!first) {
+            std:: cout << "You(\"@\") must get all the money(\"$\") while avoiding the moving enemies(\"!\") and the traps(\"*\"). Be careful, the enemies could be hiding behind the money or the traps!\nUse the arrow keys to move.\n";
+            first++;
+        }
         if (board->make_money()) {
             std:: cout << "You got a money\n";
             board->lose_money();
         }
         std:: cout << "You have " << board->num_stars() << " monies remaining\n";
-        //std::cout << "Use arrow keys to move\n";
         char response;
         response = getCharacter(); //this is from the Additions.hpp
         if (isblank(response)) {

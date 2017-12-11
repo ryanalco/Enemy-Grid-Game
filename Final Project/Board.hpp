@@ -70,14 +70,18 @@ Board:: Board(int enemies) {
 
 Board:: ~Board() {
     delete guy;
+    guy = nullptr;
     for (int i = 0; i < enemies; i++) {
         delete enemy_list[i];
+        enemy_list[i] = nullptr;
     }
     for (int i = 0; i < 4; i++) {
         delete star_list[i];
+        star_list[i] = nullptr;
     }
     for (int i = 0; i < t_num; i++) {
         delete trap_list[i];
+        trap_list[i] = nullptr;
     }
 }
 
