@@ -157,13 +157,6 @@ Game:: Game(int level) {
         std::cout << "error";
     }
     
-    /*
-    board->create_star(2, 2);
-    board->create_star(9, 9);
-    board->create_star(2, 9);
-    board->create_star(9, 2);
-*/
-    
     
 }
 
@@ -177,7 +170,7 @@ void Game:: play() {
     while ((p->is_alive()) && (board->num_stars() > 0)) {
         board->show_grid();
         if (!first) {
-            std:: cout << "You(\"@\") must get all the money(\"$\") while avoiding the moving enemies(\"!\") and the traps(\"*\"). Be careful, the enemies could be hiding behind the money or the traps!\nUse the arrow keys to move.\n";
+            std:: cout << "You(\"@\") must get all the money(\"$\") while avoiding the moving enemies(\"!\") and the traps(\"*\"). Be careful, the enemies could be hiding behind the money or the traps!\nUse the arrow keys to move.\nA number on the grid means there are that many enemies in that location.\n";
             first++;
         }
         if (board->make_money()) {
