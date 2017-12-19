@@ -58,15 +58,15 @@ Game:: Game(int level) {
             enemies--;
         }
         
-        board->create_star(2, 2);
-        board->create_star(9, 9);
-        board->create_star(2, 9);
-        board->create_star(9, 2);
+        board->create_money(2, 2);
+        board->create_money(9, 9);
+        board->create_money(2, 9);
+        board->create_money(9, 2);
         
         while (traps > 0) {
             int row_trap = 1 + rand() % 10;
             int col_trap = 1 + rand() % 10;
-            if ((row_trap == 5 && col_trap == 5) || (board->find_stars(row_trap, col_trap) == true)) {
+            if ((row_trap == 5 && col_trap == 5) || (board->find_monies(row_trap, col_trap) == true)) {
                 continue;
             }
             board->create_trap(row_trap, col_trap);
@@ -97,15 +97,15 @@ Game:: Game(int level) {
             enemies--;
         }
         
-        board->create_star(2, 2);
-        board->create_star(9, 9);
-        board->create_star(2, 9);
-        board->create_star(9, 2);
+        board->create_money(2, 2);
+        board->create_money(9, 9);
+        board->create_money(2, 9);
+        board->create_money(9, 2);
         
         while (traps > 0) {
             int row_trap = 1 + rand() % 10;
             int col_trap = 1 + rand() % 10;
-            if ((row_trap == 5 && col_trap == 5) || (board->find_stars(row_trap, col_trap))) {
+            if ((row_trap == 5 && col_trap == 5) || (board->find_monies(row_trap, col_trap))) {
                 continue;
             }
             board->create_trap(row_trap, col_trap);
@@ -136,15 +136,15 @@ Game:: Game(int level) {
             enemies--;
         }
         
-        board->create_star(2, 2);
-        board->create_star(9, 9);
-        board->create_star(2, 9);
-        board->create_star(9, 2);
+        board->create_money(2, 2);
+        board->create_money(9, 9);
+        board->create_money(2, 9);
+        board->create_money(9, 2);
         
         while (traps > 0) {
             int row_trap = 1 + rand() % 10;
             int col_trap = 1 + rand() % 10;
-            if ((row_trap == 5 && col_trap == 5) || (board->find_stars(row_trap, col_trap))) {
+            if ((row_trap == 5 && col_trap == 5) || (board->find_monies(row_trap, col_trap))) {
                 continue;
             }
             board->create_trap(row_trap, col_trap);
@@ -167,7 +167,7 @@ Game:: ~Game() {
 
 void Game:: play() {
     Player* p = board->create_player();
-    while ((p->is_alive()) && (board->num_stars() > 0)) {
+    while ((p->is_alive()) && (board->num_monies() > 0)) {
         board->show_grid();
         if (!first) {
             std:: cout << "You(\"@\") must get all the money(\"$\") while avoiding the moving enemies(\"!\") and the traps(\"*\"). Be careful, the enemies could be hiding behind the money or the traps!\nUse the arrow keys to move.\nA number on the grid means there are that many enemies in that location.\n";
@@ -177,7 +177,7 @@ void Game:: play() {
             std:: cout << "You got a money\n";
             board->lose_money();
         }
-        std:: cout << "You have " << board->num_stars() << " monies remaining\n";
+        std:: cout << "You have " << board->num_monies() << " monies remaining\n";
         char response;
         response = getCharacter(); //this is from the Additions.hpp
         if (isblank(response)) {
@@ -194,7 +194,7 @@ void Game:: play() {
             }
         }
         board->move_enemies();
-        board->check_stars();
+        board->check_monies();
         board->check_traps();
     }
     board->show_grid();

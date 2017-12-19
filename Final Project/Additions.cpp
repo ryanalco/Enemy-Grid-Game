@@ -1,21 +1,9 @@
 
-
-
-
-
-
-
 #include "Additions.hpp"
 
 #include <iostream>
 
 using namespace std;
-
-
-
-///////////////////////////////////////////////////////////////////////////
-//  Auxiliary function implementation
-///////////////////////////////////////////////////////////////////////////
 
 int decodeDirection(char dir)
 {
@@ -42,25 +30,8 @@ bool directionToDeltas(int dir, int& rowDelta, int& colDelta)
     return true;
 }
 
-///////////////////////////////////////////////////////////////////////////
-//  clearScreen implementations
-///////////////////////////////////////////////////////////////////////////
 
-// DO NOT MODIFY OR REMOVE ANY CODE BETWEEN HERE AND THE END OF THE FILE!!!
-// THE CODE IS SUITABLE FOR VISUAL C++, XCODE, AND g++ UNDER LINUX.
-
-// Note to Xcode users:  clearScreen() will just write a newline instead
-// of clearing the window if you launch your program from within Xcode.
-// That's acceptable.
-
-//#ifdef _MSC_VER  //  Microsoft Visual C++
-
-//#include <windows.h>
-
-
-
-//#else  // not Microsoft Visual C++, so assume UNIX interface
-
+//clearScreen implementations
 #include <cstring>
 
 void clearScreen()  // will just write a newline in an Xcode output window
@@ -93,10 +64,8 @@ void clearScreen()
     SetConsoleCursorPosition(hConsole, upperLeft);
 }
 
-///////////////////////////////////////////////////////////////////////////
-//  getCharacter implementations
-///////////////////////////////////////////////////////////////////////////
 
+//getCharacter implementations
 char getCharacter()
 {
     int c = _getch();

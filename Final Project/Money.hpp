@@ -12,9 +12,9 @@
 
 
 
-class Star {
+class Money {
 public:
-    Star(int row, int col);
+    Money(int row, int col);
     int get_row() const;
     int get_col() const;
     bool state();
@@ -26,21 +26,21 @@ private:
     
 };
 
-Star:: Star(int row, int col) {
+Money:: Money(int row, int col) {
     this->row = row;
     this->col = col;
     complete = false;
 }
 
-int Star:: get_row() const {
+int Money:: get_row() const {
     return row;
 }
 
-int Star:: get_col() const {
+int Money:: get_col() const {
     return col;
 }
 
-bool Star:: state() {
+bool Money:: state() {
     if (complete) {
         return true;
     }
@@ -49,7 +49,7 @@ bool Star:: state() {
     }
 }
 
-void Star:: achieve() {
+void Money:: achieve() {
     complete = true;
 }
 

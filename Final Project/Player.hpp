@@ -71,6 +71,7 @@ void Player:: kill() {
     //std:: cout << "You died\n";
 }
 
+//Moves player depending on inputed up/down/left/right direction
 void Player:: move(int dir) {
     //up
     

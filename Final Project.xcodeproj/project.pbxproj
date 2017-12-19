@@ -30,7 +30,7 @@
 		728B00721FC2891000F4B84D /* Enemy.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Enemy.hpp; sourceTree = "<group>"; };
 		728B00771FCE736F00F4B84D /* Additions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Additions.cpp; sourceTree = "<group>"; };
 		728B00781FCE736F00F4B84D /* Additions.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Additions.hpp; sourceTree = "<group>"; };
-		728B008E1FD501F200F4B84D /* Star.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Star.hpp; sourceTree = "<group>"; };
+		728B008E1FD501F200F4B84D /* Money.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Money.hpp; sourceTree = "<group>"; };
 		72911A8A1FDCB09A00A4F9AC /* Trap.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Trap.hpp; sourceTree = "<group>"; };
 		72D924F01FA3C130003CAEE7 /* Final Project */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Final Project"; sourceTree = BUILT_PRODUCTS_DIR; };
 		72D924F31FA3C130003CAEE7 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -70,7 +70,7 @@
 				728B006F1FC288B400F4B84D /* Game.hpp */,
 				728B00691FBCC84600F4B84D /* Board.hpp */,
 				728B006C1FBCCFEB00F4B84D /* Player.hpp */,
-				728B008E1FD501F200F4B84D /* Star.hpp */,
+				728B008E1FD501F200F4B84D /* Money.hpp */,
 				72911A8A1FDCB09A00A4F9AC /* Trap.hpp */,
 				728B00721FC2891000F4B84D /* Enemy.hpp */,
 				728B00781FCE736F00F4B84D /* Additions.hpp */,
